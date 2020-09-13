@@ -1,0 +1,45 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+        "no-console": false,
+        "no-var-requires": true,
+        "max-line-length": false,
+        "variable-name": [
+            true,
+            "ban-keywords",
+            "check-format",
+            "allow-leading-underscore",
+            "allow-pascal-case"
+        ],
+        "trailing-comma": false,
+        "no-trailing-whitespace": [
+            true,
+            {
+                "ignore-comments": true,
+                "ignore-jsdoc": true,
+                "ignore-template-strings": true,
+                "ignore-blank-lines": true
+            }
+        ],
+        "array-type": [
+            true,
+            "array"
+        ],
+        "comment-format": [
+            false
+        ],
+        "object-literal-sort-keys": [
+            false
+        ],
+        "radix": false,
+        "unified-signatures": false
+    },
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": []
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "lib": [
+            "es5"
+        ],
+        "module": "commonjs",
+        "declaration": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "removeComments": false,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "sourceMap": true,
+        "inlineSources": false,
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "downlevelIteration": true,
+        "importHelpers": true,
+        "outDir": "dist",
+        "rootDir": "./"
+    },
+    "exclude": [
+        "node_modules",
+        ".vscode",
+        "src/**/*.spec.ts",
+        "bin/**/*.spec.ts"
+    ],
+    "include": [
+        "bin/**/*.ts",
+        "src/**/*.ts"
+    ],
+    "compileOnSave": false,
+    "buildOnSave": false
+}
