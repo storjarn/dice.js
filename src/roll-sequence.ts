@@ -3,7 +3,7 @@ import { IRoll } from './roll';
 export class RollSequence {
     private _rolls: IRoll[] = [];
 
-    get value(): number {
+    public get value(): number {
         let retVal = 0;
         this._rolls.forEach((roll: IRoll) => {
             retVal += roll.value;
@@ -11,7 +11,13 @@ export class RollSequence {
         return retVal;
     }
 
-    push(...args: IRoll[]): number {
+    public push(...args: IRoll[]): number {
         return this._rolls.push(...args);
+    }
+
+    public toJSON() {
+        return {
+            rolls: this._rolls
+        };
     }
 }

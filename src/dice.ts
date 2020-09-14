@@ -1,6 +1,12 @@
 import { RandomGenerator, randomize } from "./randomize";
 import { IDieOptions, Roll } from "./roll";
 
+/**
+ * [[include://test.md]]
+ *
+ * @export
+ * @class Dice
+ */
 export class Dice {
 
     public PARSESTRING_USAGE_MSG = `Usage: pass the number of dice, type of dice, and modifier like so: 2d6m-8
@@ -42,8 +48,12 @@ export class Dice {
         return new Roll(multiple, typeOfDie, modifier);
     }
 
+    public isDiceString(str: string): boolean {
+        return !!str && str.indexOf("d") > -1;
+    }
+
     public parseString(str: string): Roll {
-        if (!!str && str.indexOf("d") > -1) {
+        if (this.isDiceString(str)) {
             const dSplit = str.split("d");
             const sMultiple = dSplit[0] || "1";
             let sTypeOfDie = dSplit[1];
@@ -71,7 +81,7 @@ export class Dice {
                 return new Roll(multiple, typeOfDie, modifier);
             }
         } else {
-            throw new Error(this.PARSESTRING_USAGE_MSG);
+            throw new Error(`${this.PARSESTRING_USAGE_MSG}: ${str}`);
         }
     }
 }

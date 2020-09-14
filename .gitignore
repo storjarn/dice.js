@@ -59,3 +59,4 @@ typings/
 
 __test__/__coverage__/
 dist/
+docs/

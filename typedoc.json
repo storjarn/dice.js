@@ -1,0 +1,13 @@
+{
+    "mode": "file",
+    "out": "docs",
+    "inputFiles": "src/index.ts",
+    "exclude": "(.spec|.e2e).ts",
+    "excludePrivate": true,
+    "media": "media",
+    "includes": "media",
+    "theme": "minimal",
+    "includeVersion": true,
+    "categorizeByGroup": true,
+    "listInvalidSymbolLinks": true
+}

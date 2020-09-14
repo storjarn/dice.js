@@ -32,6 +32,7 @@ export interface IRoll {
     typeOfDie: number;
     modifier: number;
     value: number;
+    die: number[];
 }
 
 export class Roll implements IRoll {
@@ -39,6 +40,7 @@ export class Roll implements IRoll {
     private _typeOfDie = 6;
     private _modifier = 0;
     private _value = 0;
+    private _die: number[] = [];
 
     get multiple(): number {
         return this._multiple;
@@ -52,12 +54,26 @@ export class Roll implements IRoll {
         return this._modifier;
     }
 
+    get die(): number[] {
+        return this._die;
+    }
+
     get value(): number {
         return this._value;
     }
 
     valueOf() {
         return this.value;
+    }
+
+    toJSON() {
+        return {
+            multiple: this.multiple,
+            typeOfDie: this.typeOfDie,
+            modifier: this.modifier,
+            value: this.value,
+            die: this.die
+        };
     }
 
     constructor(_multiple: number = 1, _typeOfDie: number = 6, _modifier: number = 0) {
@@ -71,6 +87,7 @@ export class Roll implements IRoll {
     private _findValue() {
         for (let i = 1; i < this.multiple + 1; ++i) {
             const result = randomize(1, this.typeOfDie, true)();
+            this._die.push(result);
             this._value += result;
         }
         this._value += this.modifier;
