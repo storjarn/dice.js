@@ -8,7 +8,7 @@
 
 const runAsBinary = !module.parent;
 
-import { Dice } from '../src/dice';
+import { Dice } from '../src/core/dice';
 import { underline as _, bold as B, italic as i, green as g } from 'colors';
 
 import * as pkg from '../package.json';
@@ -90,10 +90,13 @@ export async function cli(): Promise<number> {
             break;
         default:
             const testArgs = args.filter((item: string) => !dice.isDiceString(item));
+            console.log('testArgs\n', testArgs);
             if (testArgs.length) {
                 usage();
             } else {
-                args.forEach((arg: string) => retVal.push(dice.parseString(arg)));
+                args.forEach(
+                    (arg: string) => retVal.push(dice.parseString(arg))
+                );
             }
     }
     return retVal.value;

@@ -35,9 +35,14 @@ const dice = new Dice();
 // ...
 const val: number = dice.roll(3, 6, -2).value;          // some integer equal to or between 1 and 16, i.e. 3d6-2
 // ...
-const randNum: number = dice.random(3, 18);             // some float equal to or between 3 and 18, rand(3, 18)
+const randInt: number = dice.random(3, 18);             // some integer equal to or between 3 and 18, i.e. 3d6
 // ...
-const randInt: number = dice.random(3, 18, true);       // some integer equal to or between 3 and 18, i.e. 3d6
+const randNum: number = dice.randomize(3, 18)();        // some float equal to or between 3 and 18, rand(3, 18)
+// OR
+// ...
+const randInt: number = dice.random(3, 18, false);      // some float equal to or between 3 and 18, rand(3, 18)
+// ...
+const randNum: number = dice.randomize(3, 18, true)();  // some integer equal to or between 3 and 18, i.e. 3d6
 // ...
 const r1: Roll = dice.parseString("2d8m-1");            // some integer equal to or between 1 and 15, i.e. 2d8-1
 const r2: Roll = new Roll(2, 3);                        // some integer equal to or between 2 and 6, i.e. 2d3
@@ -80,7 +85,8 @@ $ dice 1d6 2d6 3d6 4d6      # some integer equal to or between 9 and 60, i.e. 1-
 OR
 
 ```bash
-$ dice 1d6 2d6m-1            # some integer equal to or between 2 and 17, i.e. 1-6 + 1-11
+$ dice 1d6 2d6m-1           # some integer equal to or between 2 and 17, i.e. 1-6 + 1-11
+11
 ```
 
 You can even pass `--json`, and also `--pretty`, to get CLI data to feed to other applications.
@@ -93,35 +99,42 @@ $ dice 2d6 3d6 4d6m-2 --json --pretty
             "multiple": 2,
             "typeOfDie": 6,
             "modifier": 0,
-            "value": 5,
+            "value": 11,
             "die": [
-                2,
-                3
-            ]
+                6,
+                5
+            ],
+            "min": 2,
+            "max": 12
         },
         {
             "multiple": 3,
             "typeOfDie": 6,
             "modifier": 0,
-            "value": 10,
+            "value": 14,
             "die": [
-                2,
                 5,
-                3
-            ]
+                4,
+                5
+            ],
+            "min": 3,
+            "max": 18
         },
         {
             "multiple": 4,
             "typeOfDie": 6,
             "modifier": -2,
-            "value": 11,
+            "value": 15,
             "die": [
+                4,
+                6,
                 5,
-                3,
-                1,
-                4
-            ]
+                2
+            ],
+            "min": 2,
+            "max": 22
         }
-    ]
+    ],
+    "value": 40
 }
 ```

@@ -3,14 +3,14 @@ import { randomize } from './randomize';
 /**
  * Represents the parameters of a Roll
  */
-export interface IDieOptions {
+export interface IRollOptions {
     /**
      * The number of dice to roll
      *
      * @type {number}
      * @memberof IDieOptions
      */
-    numberOfDie: number;
+    multiple: number;
     /**
      * The type of die to roll
      *
@@ -27,16 +27,73 @@ export interface IDieOptions {
     modifier: number;
 }
 
+/**
+ * Defines a handful of one type/side of dice
+ * Example 3 6-sided, or 2 10-sided dice.
+ * Includes modifier and metrics.
+ *
+ * @export
+ * @interface IRoll
+ */
 export interface IRoll {
+    /**
+     * The number of dice being rolled
+     *
+     * @type {number}
+     * @memberof IRoll
+     */
     multiple: number;
+    /**
+     * The sides on the dice being rolled
+     *
+     * @type {number}
+     * @memberof IRoll
+     */
     typeOfDie: number;
+    /**
+     * A plus or minus number to add to the final value
+     *
+     * @type {number}
+     * @memberof IRoll
+     */
     modifier: number;
+    /**
+     * Calculated value for this roll
+     *
+     * @type {number}
+     * @memberof IRoll
+     */
     value: number;
+    /**
+     * Each raw roll from the randomizer
+     *
+     * @type {number[]}
+     * @memberof IRoll
+     */
     die: number[];
+    /**
+     * The calculated minimum value
+     *
+     * @type {number}
+     * @memberof IRoll
+     */
     min: number;
+    /**
+     * The calculated maximum value for this roll
+     *
+     * @type {number}
+     * @memberof IRoll
+     */
     max: number;
 }
 
+/**
+ * Implementation of a Roll at it's basest functionality
+ *
+ * @export
+ * @class Roll
+ * @implements {IRoll}
+ */
 export class Roll implements IRoll {
     private _multiple = 1;
     private _typeOfDie = 6;
@@ -76,13 +133,15 @@ export class Roll implements IRoll {
         return this.value;
     }
 
-    toJSON() {
+    toJSON(): IRoll {
         return {
             multiple: this.multiple,
             typeOfDie: this.typeOfDie,
             modifier: this.modifier,
             value: this.value,
-            die: this.die
+            die: this.die,
+            min: this.min,
+            max: this.max
         };
     }
 

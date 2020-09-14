@@ -1,5 +1,12 @@
 import { IRoll } from './roll';
 
+/**
+ * Represents multiple Rolls, as in more than one type of die.
+ * Essentially an array of [[Rolls]].
+ *
+ * @export
+ * @class RollSequence
+ */
 export class RollSequence {
     private _rolls: IRoll[] = [];
 
@@ -17,7 +24,8 @@ export class RollSequence {
 
     public toJSON() {
         return {
-            rolls: this._rolls
+            rolls: this._rolls,
+            value: this.value
         };
     }
 }
