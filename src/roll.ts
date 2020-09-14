@@ -33,6 +33,8 @@ export interface IRoll {
     modifier: number;
     value: number;
     die: number[];
+    min: number;
+    max: number;
 }
 
 export class Roll implements IRoll {
@@ -60,6 +62,14 @@ export class Roll implements IRoll {
 
     get value(): number {
         return this._value;
+    }
+
+    get min(): number {
+        return this.multiple + this.modifier;
+    }
+
+    get max(): number {
+        return this.multiple * this.typeOfDie + this.modifier;
     }
 
     valueOf() {

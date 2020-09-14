@@ -1,7 +1,7 @@
 {
   "name": "@postdawn/dice.js",
-  "version": "1.0.2",
-  "description": "random number generator and dice simulator",
+  "version": "1.0.3",
+  "description": "simple or sequenced RNG (random number generator) API and dice simulator",
   "main": "src/index.js",
   "bin": {
     "dice": "./bin/cli.js"
