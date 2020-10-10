@@ -1,5 +1,5 @@
 import { RandomGenerator, randomize } from "./randomize";
-import { IRollOptions, Roll } from "./roll";
+import { IRollOptions, SidedRoll } from "./roll";
 
 /**
  * [[include://test.md]]
@@ -79,15 +79,15 @@ export class Dice {
      *
      * @param {number} typeOfDie
      * @param {number} [modifier=0]
-     * @returns {Roll}
+     * @returns {SidedRoll}
      * @memberof Dice
      */
-    public d(typeOfDie: number, modifier: number = 0): Roll {
-        return new Roll(1, typeOfDie, modifier);
+    public d(typeOfDie: number, modifier: number = 0): SidedRoll {
+        return new SidedRoll(1, typeOfDie, modifier);
     }
 
     /**
-     * Basic Roll generator function.
+     * Basic Roll factory
      *
      * @param {number} [multiple=1]
      * @param {number} [typeOfDie=6]
@@ -100,7 +100,7 @@ export class Dice {
         typeOfDie: number = 6,
         modifier: number = 0
     ) {
-        return new Roll(multiple, typeOfDie, modifier);
+        return new SidedRoll(multiple, typeOfDie, modifier);
     }
 
     /**
@@ -119,10 +119,10 @@ export class Dice {
      * Checks if isDiceString() first
      *
      * @param {string} str
-     * @returns {Roll}
+     * @returns {SidedRoll}
      * @memberof Dice
      */
-    public parseString(str: string): Roll {
+    public parseString(str: string): SidedRoll {
         if (this.isDiceString(str)) {
             const dSplit = str.split("d");
             const sMultiple = dSplit[0] || "1";
@@ -148,7 +148,7 @@ export class Dice {
             } else if (isNaN(modifier)) {
                 throw new Error("The modifier is not a number!");
             } else {
-                return new Roll(multiple, typeOfDie, modifier);
+                return new SidedRoll(multiple, typeOfDie, modifier);
             }
         } else {
             throw new Error(`${this.PARSESTRING_USAGE_MSG}: \n\n${str}\n\n`);

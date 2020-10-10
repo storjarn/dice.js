@@ -30,33 +30,12 @@ export interface IRollOptions {
 /**
  * Defines a handful of one type/side of dice
  * Example 3 6-sided, or 2 10-sided dice.
- * Includes modifier and metrics.
+ * Includes metrics.
  *
  * @export
  * @interface IRoll
  */
-export interface IRoll {
-    /**
-     * The number of dice being rolled
-     *
-     * @type {number}
-     * @memberof IRoll
-     */
-    multiple: number;
-    /**
-     * The sides on the dice being rolled
-     *
-     * @type {number}
-     * @memberof IRoll
-     */
-    typeOfDie: number;
-    /**
-     * A plus or minus number to add to the final value
-     *
-     * @type {number}
-     * @memberof IRoll
-     */
-    modifier: number;
+export interface IRoll extends IRollOptions {
     /**
      * Calculated value for this roll
      *
@@ -88,13 +67,14 @@ export interface IRoll {
 }
 
 /**
- * Implementation of a Roll at it's basest functionality
+ * Implementation of an IRoll at it's basest functionality
+ * Calculates a handful of similarly-sided die.
  *
  * @export
  * @class Roll
  * @implements {IRoll}
  */
-export class Roll implements IRoll {
+export class SidedRoll implements IRoll {
     private _multiple = 1;
     private _typeOfDie = 6;
     private _modifier = 0;

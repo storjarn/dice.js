@@ -1,9 +1,6 @@
-const gulp = require("gulp");
+import * as gulp from "gulp";
 
-/**
- * copy files for package to dist
- */
-module.exports = () => {
+export function copyDist() {
     return gulp.src([
         "package-lock.json",
         "package.json",
@@ -12,3 +9,8 @@ module.exports = () => {
         "src/**/*.md",
     ], { "base": "." }).pipe(gulp.dest("dist"));
 };
+
+/**
+ * copy files for package to dist
+ */
+gulp.task("copy.dist", copyDist);

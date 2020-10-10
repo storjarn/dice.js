@@ -1,10 +1,8 @@
-const gulp = require("gulp");
-const chmod = require('gulp-chmod');
+import * as gulp from "gulp";
+// tslint:disable-next-line: no-var-requires
+const chmod = require("gulp-chmod");
 
-/**
- * Sets exec flags on bin files
- */
-module.exports = () => {
+export function setExecFlag() {
     return gulp.src("dist/bin/**/*.js")
         .pipe(chmod({
             owner: {
@@ -21,3 +19,8 @@ module.exports = () => {
         }))
         .pipe(gulp.dest('dist/bin/'));
 };
+
+/**
+ * Sets exec flags on bin files
+ */
+gulp.task("set.exec.flag", setExecFlag);

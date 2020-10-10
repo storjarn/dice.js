@@ -1,10 +1,7 @@
-const gulp = require("gulp");
-const strip = require("gulp-strip-comments");
+import * as gulp from "gulp";
+import * as strip from "gulp-strip-comments";
 
-/**
- * strip js comments (leaves .d.ts comments for consumption)
- */
-module.exports = () => {
+export function cleanDistComments() {
     return gulp.src("dist/**/*.js")
         .pipe(
             strip.text({
@@ -13,3 +10,8 @@ module.exports = () => {
         )
         .pipe(gulp.dest("dist"));
 };
+
+/**
+ * strip js comments (leaves .d.ts comments for consumption)
+ */
+gulp.task("clean.dist.comments", cleanDistComments);

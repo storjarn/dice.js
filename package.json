@@ -14,6 +14,7 @@
     "clean:js": "gulp cleanJS",
     "clean:modules": "rimraf ./node_modules || true",
     "docs:build": "typedoc",
+    "gulp": "gulp",
     "package:build": "npm run clean:dist && npm run lint && npm run package:build:source && npm run build:post",
     "package:build:source": "tsc --inlineSources false --sourceMap false --removeComments false",
     "package:coverage": "jest --config ./jest-config.json --coverage --no-cache",
@@ -26,7 +27,8 @@
     "package:version:minor": "npm run package:version -- minor",
     "package:version:major": "npm run package:version -- major",
     "lint": "tslint --project ./",
-    "test": "jest --config ./jest-config.json --useStderr --no-cache"
+    "test": "jest --config ./jest-config.json --useStderr --no-cache",
+    "test:coverage": "jest --config ./jest-config.json --coverage --useStderr --no-cache"
   },
   "repository": {
     "type": "git",
@@ -50,6 +52,7 @@
   "dependencies": {
     "@types/del": "~4.0.0",
     "@types/gulp": "~4.0.6",
+    "@types/gulp-strip-comments": "^2.5.0",
     "@types/mkdirp": "^1.0.1",
     "@types/rimraf": "^3.0.0",
     "colors": "^1.4.0",
@@ -69,7 +72,6 @@
   },
   "devDependencies": {
     "@types/jest": "~25.1.3",
-    "gulp-load-tasks": "^0.8.4",
     "jest": "~25.1.0",
     "ts-jest": "~25.2.1",
     "typedoc": "^0.19.1"

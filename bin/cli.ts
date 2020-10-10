@@ -28,6 +28,7 @@ let isJSON = false;
 let isPretty = false;
 
 export async function cli(): Promise<number> {
+    retVal.clear();
 
     const args = process.argv.slice(2);
 
@@ -90,19 +91,23 @@ export async function cli(): Promise<number> {
             break;
         default:
             const testArgs = args.filter((item: string) => !dice.isDiceString(item));
-            console.log('testArgs\n', testArgs);
             if (testArgs.length) {
                 usage();
             } else {
                 args.forEach(
-                    (arg: string) => retVal.push(dice.parseString(arg))
+                    (arg: string) => {
+                        const val = dice.parseString(arg);
+                        retVal.push(val);
+                    }
                 );
+                display(retVal);
             }
+            break;
     }
     return retVal.value;
 }
 
-function usage() {
+export function usage() {
     console.warn(g(
         `
 ${B(name + i(' v' + version))}
@@ -111,9 +116,10 @@ ${i(_('Description'))}: ${desc}
 
 ${i(_('Usage'))}:
 
-    > ${bin} 2 6       # 2d6
-    > ${bin} 2 6 -1    # 2d6-1
-    > ${bin} 2d6m-1    # 2d6-1
+    > ${bin} 2 6                                        # 2d6
+    > ${bin} 2 6 -1                                     # 2d6-1
+    > ${bin} 2d6m-1                                     # 2d6-1
+    > ${bin} 1d6 2d8 3d10 4d12 5d14 6d16 7d18 8d20m-1
 
 `
     ));
@@ -131,6 +137,10 @@ function findJSONarg(args: string[]) {
     if (args.includes('--json')) {
         isJSON = true;
         args.splice(args.indexOf('--json'), 1);
+    }
+    if (args.includes('-J')) {
+        isJSON = true;
+        args.splice(args.indexOf('-J'), 1);
     }
 }
 function findPrettyArg(args: string[]) {

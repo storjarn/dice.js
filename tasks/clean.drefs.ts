@@ -1,10 +1,9 @@
-const gulp = require("gulp");
+import * as gulp from "gulp";
+
+// tslint:disable-next-line: no-var-requires
 const rmLines = require("gulp-rm-lines");
 
-/**
- * helper to remove reference to local .d files in dist .d files
- */
-module.exports = () => {
+export function cleanDRefs() {
     return gulp.src("./dist/**/*.d.ts")
         .pipe(rmLines({
             "filters": [
@@ -13,3 +12,8 @@ module.exports = () => {
         }))
         .pipe(gulp.dest("dist"));
 };
+
+/**
+ * helper to remove reference to local .d files in dist .d files
+ */
+gulp.task("clean.drefs", cleanDRefs);
