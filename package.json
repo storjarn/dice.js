@@ -8,10 +8,10 @@
   },
   "scripts": {
     "build": "npm run docs:build -s && npm run package:build",
-    "build:post": "gulp postBuild",
+    "build:post": "gulp post.build",
     "clean": "npm run clean:dist && npm run clean:js && npm run clean:modules",
-    "clean:dist": "gulp cleanDist",
-    "clean:js": "gulp cleanJS",
+    "clean:dist": "gulp clean.dist",
+    "clean:js": "gulp clean.JS",
     "clean:modules": "rimraf ./node_modules || true",
     "docs:build": "typedoc",
     "gulp": "gulp",

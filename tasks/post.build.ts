@@ -1,14 +1,12 @@
 import * as gulp from "gulp";
-import { setExecFlag } from "./set.exec.flag";
-import { copyDist } from "./copy.dist";
+
+import { cleanDistExtras } from "./clean.dist.extras";
 import { cleanDistComments } from "./clean.dist.comments";
 import { cleanDRefs } from "./clean.drefs";
-import { cleanDistExtras } from "./clean.dist.extras";
+import { copyDist } from "./copy.dist";
+import { setExecFlag } from "./set.exec.flag";
 
-/**
- * dist build chain
- */
-gulp.task("post.build", () => {
+export function postBuild() {
     return gulp.series(
         setExecFlag,
         copyDist,
@@ -16,4 +14,9 @@ gulp.task("post.build", () => {
         cleanDRefs,
         cleanDistExtras
     );
-});
+}
+
+/**
+ * dist build chain
+ */
+gulp.task("post.build", postBuild());

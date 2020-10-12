@@ -3,7 +3,9 @@ import * as del from "del";
 
 export function cleanDistExtras() {
     return del([
-        "dist/__test__"
+        "dist/__test__",
+        "dist/tasks/",
+        "dist/gulpfile*.ts"
     ]);
 };
 

@@ -1,3 +1,4 @@
+export * from "./default";
 export * from "./clean.dist.extras";
 export * from "./clean.dist.comments";
 export * from "./clean.dist";
