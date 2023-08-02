@@ -57,6 +57,6 @@ typings/
 # dotenv environment variables file
 .env
 
-__test__/__coverage__/
+__test__/
 dist/
 docs/

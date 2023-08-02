@@ -1,4 +1,4 @@
-import { randomize } from './randomize';
+import { randomize } from "./randomize";
 
 /**
  * Represents the parameters of a Roll
@@ -6,23 +6,14 @@ import { randomize } from './randomize';
 export interface IRollOptions {
     /**
      * The number of dice to roll
-     *
-     * @type {number}
-     * @memberof IDieOptions
      */
     multiple: number;
     /**
      * The type of die to roll
-     *
-     * @type {number}
-     * @memberof IDieOptions
      */
     typeOfDie: number;
     /**
      * The modifier to add to the total
-     *
-     * @type {number}
-     * @memberof IDieOptions
      */
     modifier: number;
 }
@@ -31,37 +22,22 @@ export interface IRollOptions {
  * Defines a handful of one type/side of dice
  * Example 3 6-sided, or 2 10-sided dice.
  * Includes metrics.
- *
- * @export
- * @interface IRoll
  */
 export interface IRoll extends IRollOptions {
     /**
      * Calculated value for this roll
-     *
-     * @type {number}
-     * @memberof IRoll
      */
     value: number;
     /**
      * Each raw roll from the randomizer
-     *
-     * @type {number[]}
-     * @memberof IRoll
      */
     die: number[];
     /**
      * The calculated minimum value
-     *
-     * @type {number}
-     * @memberof IRoll
      */
     min: number;
     /**
      * The calculated maximum value for this roll
-     *
-     * @type {number}
-     * @memberof IRoll
      */
     max: number;
 }
@@ -69,10 +45,6 @@ export interface IRoll extends IRollOptions {
 /**
  * Implementation of an IRoll at it's basest functionality
  * Calculates a handful of similarly-sided die.
- *
- * @export
- * @class Roll
- * @implements {IRoll}
  */
 export class SidedRoll implements IRoll {
     private _multiple = 1;

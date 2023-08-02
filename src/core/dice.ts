@@ -3,26 +3,17 @@ import { IRollOptions, SidedRoll } from "./roll";
 
 /**
  * [[include://test.md]]
- *
- * @export
- * @class Dice
  */
 export class Dice {
 
     /**
      * Default error message using parseString()
-     *
-     * @memberof Dice
      */
     public PARSESTRING_USAGE_MSG = `Usage: pass the number of dice, type of dice, and modifier like so: 2d6m-8
     \n\texample: parseString('2d6m-8') or parseString('3d6')\n`;
 
     /**
      * Default dice handful
-     *
-     * @readonly
-     * @type {IRollOptions}
-     * @memberof Dice
      */
     public get defaults(): IRollOptions {
         return {
@@ -38,12 +29,10 @@ export class Dice {
      * otherwise return a float.
      * Usage: random(1) => an integer equal to or between 1 and 100
      * Usage: random(0, 1, false) => a float equal to or between 0 and 1
-     *
-     * @param {number} [min=0]
-     * @param {number} [max=100]
-     * @param {boolean} [bAsInt=true]
-     * @returns {number}
-     * @memberof Dice
+     * @param [min]
+     * @param [max]
+     * @param [bAsInt]
+     * @returns
      */
     public random(
         min: number = 0,
@@ -57,12 +46,10 @@ export class Dice {
      * A random function generator, defaults to floats (third argument).
      * Third argument (default: false) false means return an float,
      * otherwise return a integer.
-     *
-     * @param {number} [min=0]
-     * @param {number} [max=1]
-     * @param {boolean} [bAsInt=false]
-     * @returns {RandomGenerator}
-     * @memberof Dice
+     * @param [min]
+     * @param [max]
+     * @param [bAsInt]
+     * @returns
      */
     public randomize(
         min: number = 0,
@@ -76,11 +63,9 @@ export class Dice {
      * A single die roll, with optional modifier.
      * Ex: d(10)        # 1d10
      * Ex: d(12, 6)     # 1d12+6, 1d12m6
-     *
-     * @param {number} typeOfDie
-     * @param {number} [modifier=0]
-     * @returns {SidedRoll}
-     * @memberof Dice
+     * @param typeOfDie
+     * @param [modifier]
+     * @returns
      */
     public d(typeOfDie: number, modifier: number = 0): SidedRoll {
         return new SidedRoll(1, typeOfDie, modifier);
@@ -88,12 +73,10 @@ export class Dice {
 
     /**
      * Basic Roll factory
-     *
-     * @param {number} [multiple=1]
-     * @param {number} [typeOfDie=6]
-     * @param {number} [modifier=0]
+     * @param [multiple]
+     * @param [typeOfDie]
+     * @param [modifier]
      * @returns
-     * @memberof Dice
      */
     public roll(
         multiple: number = 1,
@@ -105,10 +88,8 @@ export class Dice {
 
     /**
      * String test for dice string format
-     *
-     * @param {string} str
-     * @returns {boolean}
-     * @memberof Dice
+     * @param str
+     * @returns
      */
     public isDiceString(str: string): boolean {
         return !!str && str.indexOf("d") > -1;
@@ -117,10 +98,8 @@ export class Dice {
     /**
      * Juggernaut parser
      * Checks if isDiceString() first
-     *
-     * @param {string} str
-     * @returns {SidedRoll}
-     * @memberof Dice
+     * @param str
+     * @returns
      */
     public parseString(str: string): SidedRoll {
         if (this.isDiceString(str)) {

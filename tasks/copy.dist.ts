@@ -1,5 +1,8 @@
 import * as gulp from "gulp";
 
+/**
+ *
+ */
 export function copyDist() {
     return gulp.src([
         "package-lock.json",
@@ -8,7 +11,7 @@ export function copyDist() {
         // "docs/**",
         "src/**/*.md",
     ], { "base": "." }).pipe(gulp.dest("dist"));
-};
+}
 
 /**
  * copy files for package to dist

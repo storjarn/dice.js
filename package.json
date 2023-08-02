@@ -1,79 +1,83 @@
 {
-  "name": "@postdawn/dice.js",
-  "version": "1.0.3",
-  "description": "simple or sequenced RNG (random number generator) API and dice simulator",
-  "main": "src/index.js",
-  "bin": {
-    "dice": "./bin/cli.js"
-  },
-  "scripts": {
-    "build": "npm run docs:build -s && npm run package:build",
-    "build:post": "gulp post.build",
-    "clean": "npm run clean:dist && npm run clean:js && npm run clean:modules",
-    "clean:dist": "gulp clean.dist",
-    "clean:js": "gulp clean.JS",
-    "clean:modules": "rimraf ./node_modules || true",
-    "docs:build": "typedoc",
-    "gulp": "gulp",
-    "package:build": "npm run clean:dist && npm run lint && npm run package:build:source && npm run build:post",
-    "package:build:source": "tsc --inlineSources false --sourceMap false --removeComments false",
-    "package:coverage": "jest --config ./jest-config.json --coverage --no-cache",
-    "package:link": "cd dist && npm link && cd ..",
-    "package:publish": "npm run build && npm publish dist --access public",
-    "package:name:get": "node -p 'require(\"./package.json\").name'",
-    "package:version": "npm version --no-git-tag-version",
-    "package:version:get": "node -p 'require(\"./package.json\").version'",
-    "package:version:patch": "npm run package:version -- patch",
-    "package:version:minor": "npm run package:version -- minor",
-    "package:version:major": "npm run package:version -- major",
-    "lint": "tslint --project ./",
-    "test": "jest --config ./jest-config.json --useStderr --no-cache",
-    "test:coverage": "jest --config ./jest-config.json --coverage --useStderr --no-cache"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/storjarn/dice.js.git"
-  },
-  "keywords": [
-    "random",
-    "number",
-    "generator",
-    "dice",
-    "node",
-    "javascript",
-    "typescript"
-  ],
-  "author": "Christopher Maples (cmaples77@gmail.com)",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/storjarn/dice.js/issues"
-  },
-  "homepage": "https://github.com/storjarn/dice.js#readme",
-  "dependencies": {
-    "@types/del": "~4.0.0",
-    "@types/gulp": "~4.0.6",
-    "@types/gulp-strip-comments": "^2.5.0",
-    "@types/mkdirp": "^1.0.1",
-    "@types/rimraf": "^3.0.0",
-    "colors": "^1.4.0",
-    "concurrently": "~4.1.0",
-    "cross-env": "~5.2.0",
-    "del": "^4.1.0",
-    "gulp": "~4.0.0",
-    "gulp-chmod": "^3.0.0",
-    "gulp-rm-lines": "~0.0.9",
-    "gulp-strip-comments": "~2.5.2",
-    "mkdirp": "^1.0.4",
-    "rimraf": "^3.0.2",
-    "ts-node": "^8.10.2",
-    "tslib": "^2.0.1",
-    "tslint": "~6.1.2",
-    "typescript": "^3.9.5"
-  },
-  "devDependencies": {
-    "@types/jest": "~25.1.3",
-    "jest": "~25.1.0",
-    "ts-jest": "~25.2.1",
-    "typedoc": "^0.19.1"
-  }
+    "name": "@postdawn/dice.js",
+    "version": "1.0.3",
+    "description": "simple or sequenced RNG (random number generator) API and dice simulator",
+    "main": "src/index.js",
+    "bin": {
+        "dice": "./bin/cli.js"
+    },
+    "scripts": {
+        "build": "npm run docs:build -s && npm run package:build",
+        "build:post": "gulp post.build",
+        "clean": "npm run clean:dist && npm run clean:js && npm run clean:modules",
+        "clean:dist": "gulp clean.dist",
+        "clean:js": "gulp clean.JS",
+        "clean:modules": "rimraf ./node_modules || true",
+        "docs:build": "typedoc",
+        "gulp": "gulp",
+        "package:build": "npm run clean:dist && npm run lint && npm run package:build:source && npm run build:post",
+        "package:build:source": "tsc -p ./tsconfig.build.json",
+        "package:coverage": "jest --config ./jest-config.json --coverage --no-cache",
+        "package:link": "cd dist && npm link && cd ..",
+        "package:publish": "npm run build && npm publish dist --access public",
+        "package:name:get": "node -p 'require(\"./package.json\").name'",
+        "package:version": "npm version --no-git-tag-version",
+        "package:version:get": "node -p 'require(\"./package.json\").version'",
+        "package:version:patch": "npm run package:version -- patch",
+        "package:version:minor": "npm run package:version -- minor",
+        "package:version:major": "npm run package:version -- major",
+        "lint": "eslint ./",
+        "lint:fix": "eslint --fix ./",
+        "test": "jest --config ./jest-config.json --useStderr --no-cache --coverage",
+        "test:coverage": "jest --config ./jest-config.json --coverage --useStderr --no-cache"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/storjarn/dice.js.git"
+    },
+    "keywords": [
+        "random",
+        "number",
+        "generator",
+        "dice",
+        "node",
+        "javascript",
+        "typescript"
+    ],
+    "author": "Christopher Maples (cmaples77@gmail.com)",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/storjarn/dice.js/issues"
+    },
+    "homepage": "https://github.com/storjarn/dice.js#readme",
+    "dependencies": {
+        "@types/del": "~4.0.0",
+        "@types/gulp": "~4.0.6",
+        "@types/gulp-strip-comments": "^2.5.0",
+        "@types/mkdirp": "^1.0.1",
+        "@types/rimraf": "^3.0.0",
+        "@typescript-eslint/eslint-plugin": "^6.2.1",
+        "@typescript-eslint/parser": "^6.2.1",
+        "colors": "^1.4.0",
+        "concurrently": "~4.1.0",
+        "cross-env": "~5.2.0",
+        "del": "^4.1.0",
+        "eslint": "^8.46.0",
+        "gulp": "~4.0.0",
+        "gulp-chmod": "^3.0.0",
+        "gulp-rm-lines": "~0.0.9",
+        "gulp-strip-comments": "~2.5.2",
+        "mkdirp": "^1.0.4",
+        "rimraf": "^3.0.2",
+        "ts-node": "^8.10.2",
+        "tslib": "^2.6.1",
+        "typescript": "^3.9.5"
+    },
+    "devDependencies": {
+        "@types/jest": "~25.1.3",
+        "eslint-plugin-jsdoc": "^46.4.5",
+        "jest": "~25.1.0",
+        "ts-jest": "~25.2.1",
+        "typedoc": "^0.19.1"
+    }
 }

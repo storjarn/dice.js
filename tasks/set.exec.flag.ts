@@ -1,7 +1,11 @@
 import * as gulp from "gulp";
-// tslint:disable-next-line: no-var-requires
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const chmod = require("gulp-chmod");
 
+/**
+ *
+ */
 export function setExecFlag() {
     return gulp.src("dist/bin/**/*.js")
         .pipe(chmod({
@@ -17,8 +21,8 @@ export function setExecFlag() {
                 execute: true
             }
         }))
-        .pipe(gulp.dest('dist/bin/'));
-};
+        .pipe(gulp.dest("dist/bin/"));
+}
 
 /**
  * Sets exec flags on bin files

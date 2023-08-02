@@ -7,11 +7,11 @@ export type RandomGenerator = (bAsInt?: boolean) => number;
 /**
  * The meta-core or RNG of this library
  * Generates a generator of randomness, based on initial params
- *
  * @param min
  * @param max
  * @param bAsInt
  * @param seed
+ * @param _seed
  */
 export const randomize = (
     min: number = 0,

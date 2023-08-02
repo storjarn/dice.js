@@ -6,19 +6,19 @@
  * handful of die.
  */
 
-const runAsBinary = !module.parent;
+const runAsBinary = require.main === module;
 
-import { Dice } from '../src/core/dice';
-import { underline as _, bold as B, italic as i, green as g } from 'colors';
+import { bold as B, underline as _, green as g, italic as i } from "colors";
+import { Dice } from "../src/core/dice";
 
-import * as pkg from '../package.json';
-import { RollSequence } from '../src';
+import * as pkg from "../package.json";
+import { RollSequence } from "../src";
 
 const name = pkg.name;
 const version = pkg.version;
 const desc = pkg.description;
 
-const bin = 'dice';
+const bin = "dice";
 
 export const dice = new Dice();
 
@@ -27,12 +27,15 @@ const retVal: RollSequence = new RollSequence();
 let isJSON = false;
 let isPretty = false;
 
+/**
+ *
+ */
 export async function cli(): Promise<number> {
     retVal.clear();
 
     const args = process.argv.slice(2);
 
-    if (!args.length || args.includes('--help')) {
+    if (!args.length || args.includes("--help")) {
         usage();
         return 0;
     }
@@ -89,7 +92,7 @@ export async function cli(): Promise<number> {
 
             display(retVal);
             break;
-        default:
+        default: {
             const testArgs = args.filter((item: string) => !dice.isDiceString(item));
             if (testArgs.length) {
                 usage();
@@ -103,18 +106,22 @@ export async function cli(): Promise<number> {
                 display(retVal);
             }
             break;
+        }
     }
     return retVal.value;
 }
 
-export function usage() {
+/**
+ *
+ */
+function usage() {
     console.warn(g(
         `
-${B(name + i(' v' + version))}
+${B(name + i(" v" + version))}
 
-${i(_('Description'))}: ${desc}
+${i(_("Description"))}: ${desc}
 
-${i(_('Usage'))}:
+${i(_("Usage"))}:
 
     > ${bin} 2 6                                        # 2d6
     > ${bin} 2 6 -1                                     # 2d6-1
@@ -125,37 +132,54 @@ ${i(_('Usage'))}:
     ));
 }
 
+/**
+ *
+ * @param seq
+ */
 function display(seq: RollSequence) {
     if (isJSON) {
-        console.log(JSON.stringify(seq, null, isPretty ? 4 : 0));
+        console.log(JSON.stringify(seq, null, isPretty ? 4 : 0).trim());
     } else {
         console.log(seq.value);
     }
 }
 
+/**
+ *
+ * @param args
+ */
 function findJSONarg(args: string[]) {
-    if (args.includes('--json')) {
+    if (args.includes("--json")) {
         isJSON = true;
-        args.splice(args.indexOf('--json'), 1);
+        args.splice(args.indexOf("--json"), 1);
     }
-    if (args.includes('-J')) {
+    if (args.includes("-J")) {
         isJSON = true;
-        args.splice(args.indexOf('-J'), 1);
+        args.splice(args.indexOf("-J"), 1);
     }
 }
+/**
+ *
+ * @param args
+ */
 function findPrettyArg(args: string[]) {
-    if (args.includes('--pretty')) {
+    if (args.includes("--pretty")) {
         findJSONarg(args);
         isPretty = true;
-        args.splice(args.indexOf('--pretty'), 1);
+        args.splice(args.indexOf("--pretty"), 1);
     }
 }
 
-async function main() {
+/**
+ *
+ */
+export async function main() {
     if (runAsBinary) {
         await cli();
         process.exit(0);
     }
 }
 
-main();
+main().then(() => {
+    console.log("");
+});
