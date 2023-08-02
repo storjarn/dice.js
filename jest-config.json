@@ -15,8 +15,7 @@
     "testRegex": "(/__test__/__tests__|src|bin)/.*\\.(spec)\\.(ts|js)$",
     "roots": [
         "<rootDir>/src/",
-        "<rootDir>/bin/",
-        "<rootDir>/__test__/"
+        "<rootDir>/bin/"
     ],
     "moduleFileExtensions": [
         "ts",

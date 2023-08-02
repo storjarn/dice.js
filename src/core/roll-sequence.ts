@@ -1,11 +1,8 @@
-import { IRoll } from './roll';
+import { IRoll } from "./roll";
 
 /**
  * Represents multiple Rolls, as in more than one type of die.
  * Essentially an array of [[IRoll]].
- *
- * @export
- * @class RollSequence
  */
 export class RollSequence {
     private _rolls: IRoll[] = [];

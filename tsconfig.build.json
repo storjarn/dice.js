@@ -1,0 +1,14 @@
+{
+    "extends": "./tsconfig.json",
+    "exclude": [
+        "node_modules",
+        ".vscode",
+        "src/**/*.spec.ts",
+        "bin/**/*.spec.ts"
+    ],
+    "compilerOptions": {
+        "inlineSources": false,
+        "sourceMap": false,
+        "removeComments": false
+    }
+}

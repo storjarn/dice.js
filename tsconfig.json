@@ -2,7 +2,10 @@
     "compilerOptions": {
         "target": "es5",
         "lib": [
-            "es5"
+            "es2017",
+            "es2015",
+            "dom",
+            "es6"
         ],
         "module": "commonjs",
         "declaration": true,
@@ -13,7 +16,6 @@
         "noUnusedParameters": true,
         "moduleResolution": "node",
         "resolveJsonModule": true,
-        "suppressImplicitAnyIndexErrors": true,
         "sourceMap": true,
         "inlineSources": false,
         "typeRoots": [
@@ -26,11 +28,10 @@
     },
     "exclude": [
         "node_modules",
-        ".vscode",
-        "src/**/*.spec.ts",
-        "bin/**/*.spec.ts"
+        ".vscode"
     ],
     "include": [
+        ".eslintrc.js",
         "gulpfile.ts",
         "bin/**/*.ts",
         "src/**/*.ts"

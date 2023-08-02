@@ -1,4 +1,4 @@
-import { cli, dice } from './cli';
+import { cli, dice } from "./cli";
 
 describe("bin/cli", () => {
 
@@ -16,7 +16,7 @@ describe("bin/cli", () => {
     it("can show help", async () => {
         const logSpy = jest.spyOn(console, "warn");
 
-        process.argv.push('--help');
+        process.argv.push("--help");
 
         const retVal = await cli();
 
@@ -28,7 +28,7 @@ describe("bin/cli", () => {
         const logSpy = jest.spyOn(console, "log");
         const parseSpy = jest.spyOn(dice, "parseString");
 
-        process.argv.push('2d6m6');
+        process.argv.push("2d6m6");
 
         const retVal = await cli();
 
@@ -40,8 +40,8 @@ describe("bin/cli", () => {
         const logSpy = jest.spyOn(console, "log");
         const parseSpy = jest.spyOn(dice, "parseString");
 
-        process.argv.push('2d6m6');
-        process.argv.push('1d6m-1');
+        process.argv.push("2d6m6");
+        process.argv.push("1d6m-1");
 
         const retVal = await cli();
 
@@ -61,9 +61,9 @@ describe("bin/cli", () => {
         const logSpy = jest.spyOn(console, "log");
         const parseSpy = jest.spyOn(dice, "parseString");
 
-        process.argv.push('2d6m6');
-        process.argv.push('1d6m-1');
-        process.argv.push('3d6');
+        process.argv.push("2d6m6");
+        process.argv.push("1d6m-1");
+        process.argv.push("3d6");
 
         const retVal = await cli();
 
@@ -88,12 +88,12 @@ describe("bin/cli", () => {
         const logSpy = jest.spyOn(console, "log");
         const parseSpy = jest.spyOn(dice, "parseString");
 
-        process.argv.push('2d6m6');
-        process.argv.push('1d6m-1');
-        process.argv.push('3d6');
-        process.argv.push('4d6');
-        process.argv.push('5d6');
-        process.argv.push('6d6');
+        process.argv.push("2d6m6");
+        process.argv.push("1d6m-1");
+        process.argv.push("3d6");
+        process.argv.push("4d6");
+        process.argv.push("5d6");
+        process.argv.push("6d6");
 
         const retVal = await cli();
 
@@ -130,12 +130,12 @@ describe("bin/cli", () => {
         const logSpy = jest.spyOn(console, "warn");
         const parseSpy = jest.spyOn(dice, "isDiceString");
 
-        process.argv.push('2d6m6');
-        process.argv.push('1d6m-1');
-        process.argv.push('3');
-        process.argv.push('4d6');
-        process.argv.push('5d6');
-        process.argv.push('6d6');
+        process.argv.push("2d6m6");
+        process.argv.push("1d6m-1");
+        process.argv.push("3");
+        process.argv.push("4d6");
+        process.argv.push("5d6");
+        process.argv.push("6d6");
 
         const retVal = await cli();
 
@@ -148,8 +148,8 @@ describe("bin/cli", () => {
         const logSpy = jest.spyOn(console, "log");
         const rollSpy = jest.spyOn(dice, "roll");
 
-        process.argv.push('2');
-        process.argv.push('6');
+        process.argv.push("2");
+        process.argv.push("6");
 
         const retVal = await cli();
 
@@ -161,9 +161,9 @@ describe("bin/cli", () => {
         const logSpy = jest.spyOn(console, "log");
         const rollSpy = jest.spyOn(dice, "roll");
 
-        process.argv.push('2');
-        process.argv.push('6');
-        process.argv.push('6');
+        process.argv.push("2");
+        process.argv.push("6");
+        process.argv.push("6");
 
         const retVal = await cli();
 
