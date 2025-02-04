@@ -20,7 +20,7 @@ export const randomize = (
     _seed: number | string | null = null        // TODO:: Experimental
 ): RandomGenerator => {
     if (min > max) {
-        throw new Error("Min should be less than or equal to max!");
+        throw new Error(`Min ${min} should be less than or equal to max ${max}!`);
     }
     return (_bAsInt: boolean = false): number => {
         _bAsInt = bAsInt || _bAsInt;

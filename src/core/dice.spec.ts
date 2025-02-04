@@ -56,25 +56,45 @@ describe("dice", () => {
 
             it("is stable", () => {
                 const dice = new Dice();
-                for (let i = 0; i < 1000; ++i) {
+                for (let i = 1; i < 1000; ++i) {
                     const val = dice.d(i);
                     expect(
                         val.min === 1
-                        && val.max === i
-                        && val.multiple === 1
-                        && val.typeOfDie === i
-                        && val.value >= 1
-                        && val.value <= i
+                    ).toBeTruthy();
+                    expect(
+                        val.max === i
+                    ).toBeTruthy();
+                    expect(
+                        val.multiple === 1
+                    ).toBeTruthy();
+                    expect(
+                        val.typeOfDie === i
+                    ).toBeTruthy();
+                    expect(
+                        val.value >= 1
+                    ).toBeTruthy();
+                    expect(
+                        val.value <= i
                     ).toBeTruthy();
 
                     const val2 = dice.d(i, -1);
                     expect(
-                        val.min === 0
-                        && val2.max === i - 1
-                        && val2.multiple === 1
-                        && val2.typeOfDie === i
-                        && val2.value >= 0
-                        && val2.value <= i - 1
+                        val2.min === 0
+                    ).toBeTruthy();
+                    expect(
+                        val2.max === i - 1
+                    ).toBeTruthy();
+                    expect(
+                        val2.multiple === 1
+                    ).toBeTruthy();
+                    expect(
+                        val2.typeOfDie === i
+                    ).toBeTruthy();
+                    expect(
+                        val2.value >= 0
+                    ).toBeTruthy();
+                    expect(
+                        val2.value <= i - 1
                     ).toBeTruthy();
                 }
             });
